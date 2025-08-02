@@ -447,6 +447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _input: {fileID: 1740502797}
   _groundDetector: {fileID: 432452411}
+  _playerAnimations: {fileID: 680795760}
   _speed: 70
   _jumpForce: 200
 --- !u!247 &432452408
@@ -1325,8 +1326,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6fb6c52d42f7b41835638193783d39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerMovement: {fileID: 432452407}
-  _groundDetector: {fileID: 432452411}
 --- !u!95 &680795761
 Animator:
   serializedVersion: 7
@@ -1977,6 +1976,7 @@ GameObject:
   - component: {fileID: 1246317140}
   - component: {fileID: 1246317139}
   - component: {fileID: 1246317138}
+  - component: {fileID: 1246317141}
   m_Layer: 0
   m_Name: Tilemap
   m_TagString: Untagged
@@ -5003,6 +5003,18 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!114 &1246317141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246317134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52dec0d288ed31245b4f30420fc5d118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1250243843
 GameObject:
   m_ObjectHideFlags: 0
