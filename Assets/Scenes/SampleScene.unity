@@ -337,6 +337,7 @@ GameObject:
   - component: {fileID: 432452410}
   - component: {fileID: 432452411}
   - component: {fileID: 432452412}
+  - component: {fileID: 432452413}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -485,15 +486,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 133e6101788a9c94fbc3aefde953ecb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fruits:
-  - {fileID: 1752058611}
-  - {fileID: 2035054823}
-  - {fileID: 969812331}
-  - {fileID: 594402862}
-  - {fileID: 747650901}
-  - {fileID: 1545837603}
-  - {fileID: 1465727863}
-  - {fileID: 460408589}
 --- !u!114 &432452411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,6 +510,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae93a7159427944b937f3cb7a258426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &432452413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432452403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f8521a625e2f04ca814c3883b35828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _counter: {fileID: 432452410}
 --- !u!1 &460408587
 GameObject:
   m_ObjectHideFlags: 0
