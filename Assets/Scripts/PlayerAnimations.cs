@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class PlayerAnimations : MonoBehaviour
 {
+    private const string Running = nameof(Running);
+    private const string Jumping = nameof(Jumping);
+    private const string Falling = nameof(Falling);
+
     [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] GroundDetector _groundDetector;
 
     private Animator _animator;
 
@@ -15,7 +20,7 @@ public class PlayerAnimations : MonoBehaviour
 
     private void Update()
     {
-        if (Mathf.Abs(_playerMovement._rigidBody2D.linearVelocityX) > 0)
+        if (Mathf.Abs(_playerMovement.RigidBody2D.linearVelocityX) > 0)
         {
             PlayRun();
         }
@@ -24,39 +29,39 @@ public class PlayerAnimations : MonoBehaviour
             PlayIdle();
         }
 
-        if(_playerMovement._rigidBody2D.linearVelocityY > 0)
+        if (_playerMovement.RigidBody2D.linearVelocityY > 0)
         {
             PlayJump();
         }
-        else if(_playerMovement._rigidBody2D.linearVelocityY < 0)
+        else if (_playerMovement.RigidBody2D.linearVelocityY < 0)
         {
             PlayFall();
         }
 
-        if (_playerMovement._isGrounded)
+        if (_groundDetector.IsGrounded)
         {
-            _animator.SetBool("Falling", false);
+            _animator.SetBool(Falling, false);
         }
     }
 
     private void PlayRun()
     {
-        _animator.SetBool("Running", true);
+        _animator.SetBool(Running, true);
     }
 
     private void PlayIdle()
     {
-        _animator.SetBool("Running", false);
+        _animator.SetBool(Running, false);
     }
 
     private void PlayJump()
     {
-        _animator.SetBool("Jumping", true);
+        _animator.SetBool(Jumping, true);
     }
 
     private void PlayFall()
     {
-        _animator.SetBool("Jumping", false);
-        _animator.SetBool("Falling", true);
+        _animator.SetBool(Jumping, false);
+        _animator.SetBool(Falling, true);
     }
 }

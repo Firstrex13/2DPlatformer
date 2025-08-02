@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 1698634}
   - component: {fileID: 1698633}
   - component: {fileID: 1698636}
+  - component: {fileID: 1698637}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -244,7 +245,19 @@ MonoBehaviour:
   _targetPoints:
   - {fileID: 1250243844}
   - {fileID: 141040425}
-  _speed: 0.5
+  _speed: 1
+--- !u!114 &1698637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae93a7159427944b937f3cb7a258426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &141040424
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,9 +331,12 @@ GameObject:
   - component: {fileID: 432452404}
   - component: {fileID: 432452405}
   - component: {fileID: 432452406}
-  - component: {fileID: 432452407}
   - component: {fileID: 432452408}
+  - component: {fileID: 432452407}
   - component: {fileID: 432452409}
+  - component: {fileID: 432452410}
+  - component: {fileID: 432452411}
+  - component: {fileID: 432452412}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -429,6 +445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ba2c8c856b8fe4db1a1d40edb92ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _input: {fileID: 1740502797}
+  _groundDetector: {fileID: 432452411}
   _speed: 70
   _jumpForce: 200
 --- !u!247 &432452408
@@ -452,6 +470,51 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92f30b5ff22a9944a9f430106db45d16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &432452410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432452403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 133e6101788a9c94fbc3aefde953ecb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fruits:
+  - {fileID: 1752058611}
+  - {fileID: 2035054823}
+  - {fileID: 969812331}
+  - {fileID: 594402862}
+  - {fileID: 747650901}
+  - {fileID: 1545837603}
+  - {fileID: 1465727863}
+  - {fileID: 460408589}
+--- !u!114 &432452411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432452403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47c266802b1d4f643a54097bc4e0c26d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &432452412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432452403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae93a7159427944b937f3cb7a258426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &460408587
@@ -1126,7 +1189,7 @@ GameObject:
   - component: {fileID: 621108973}
   - component: {fileID: 621108974}
   m_Layer: 0
-  m_Name: FruitManager
+  m_Name: FruitCountView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1159,15 +1222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58ef8e36c0107d643b642bc06e21bc9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fruits:
-  - {fileID: 1752058611}
-  - {fileID: 2035054823}
-  - {fileID: 969812331}
-  - {fileID: 594402862}
-  - {fileID: 747650901}
-  - {fileID: 1545837603}
-  - {fileID: 1465727863}
-  - {fileID: 460408589}
+  _counter: {fileID: 432452410}
   _text: {fileID: 1983001817}
 --- !u!1 &680795757
 GameObject:
@@ -1271,6 +1326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerMovement: {fileID: 432452407}
+  _groundDetector: {fileID: 432452411}
 --- !u!95 &680795761
 Animator:
   serializedVersion: 7
@@ -1305,6 +1361,7 @@ GameObject:
   - component: {fileID: 691634205}
   - component: {fileID: 691634204}
   - component: {fileID: 691634203}
+  - component: {fileID: 691634207}
   m_Layer: 0
   m_Name: Enemy (1)
   m_TagString: Untagged
@@ -1419,6 +1476,18 @@ Transform:
   - {fileID: 828559315}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &691634207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691634202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae93a7159427944b937f3cb7a258426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &747650899
 GameObject:
   m_ObjectHideFlags: 0
@@ -5521,6 +5590,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1740502796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1740502798}
+  - component: {fileID: 1740502797}
+  m_Layer: 0
+  m_Name: PlayerInput
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1740502797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740502796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe41d85c6aa9ae4cb01d7fe0d24ce15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1740502798
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740502796}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.44353, y: -5.23735, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1752058610
 GameObject:
   m_ObjectHideFlags: 0
@@ -6102,6 +6215,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 619394802}
   - {fileID: 432452404}
+  - {fileID: 1740502798}
   - {fileID: 519420032}
   - {fileID: 1700917900}
   - {fileID: 2038226371}

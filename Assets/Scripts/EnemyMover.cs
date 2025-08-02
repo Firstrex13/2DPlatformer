@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent (typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 
 public class EnemyMover : MonoBehaviour
 {
@@ -30,7 +30,6 @@ public class EnemyMover : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-        Rotate();
     }
 
     private void Move()
@@ -40,38 +39,18 @@ public class EnemyMover : MonoBehaviour
             GetIndex();
         }
 
-        _rigidBody2D.position = Vector2.MoveTowards(transform.position, _targetPoints[_pointIndex].position, Time.fixedDeltaTime * _speed);
-    }
+        Vector3 direction = (_targetPoints[_pointIndex].position - transform.position).normalized;
 
-    private float GetSqrDistance(Vector2 start, Vector2 end)
-    {
-        return (end - start).sqrMagnitude;
-    }
-
-    private bool IsEnoughClose(Vector2 start, Vector2 end, float distance)
-    {
-        return GetSqrDistance(start, end) <= distance * distance;
+        _rigidBody2D.linearVelocity = direction * _speed;
     }
 
     public bool IsTargetReached()
     {
-        return IsEnoughClose(transform.position, _targetPoints[_pointIndex].position, _distanceToTarget);
+        return Utilits.IsEnoughClose(transform.position, _targetPoints[_pointIndex].position, _distanceToTarget);
     }
 
     private int GetIndex()
     {
         return _pointIndex = ++_pointIndex % _targetPoints.Length;
-    }
-
-    private void Rotate()
-    {
-        if (_pointIndex == 1)
-        {
-            transform.localScale = new Vector2(1, 1);
-        }
-        else if (_pointIndex == 0)
-        {
-            transform.localScale = new Vector2(-1, 1);
-        }
     }
 }

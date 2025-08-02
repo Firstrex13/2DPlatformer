@@ -10,9 +10,4 @@ public class Fruit : MonoBehaviour
         PickedUp?.Invoke();
         Destroy(gameObject);
     }
-
-    private void DestroyFruit()
-    {
-        Destroy(gameObject);
-    }
 }
