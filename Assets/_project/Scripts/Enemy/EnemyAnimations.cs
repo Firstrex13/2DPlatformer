@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class EnemyAnimations : MonoBehaviour
 {
-    private const string Idle = nameof(Idle);
-    private const string Running = nameof(Running);
-    private const string Hit = nameof(Hit);
+    private readonly int Idle = Animator.StringToHash(nameof(Idle));
+    private readonly int Running = Animator.StringToHash(nameof(Running));
+    private readonly int Hit = Animator.StringToHash(nameof(Hit));
 
     [SerializeField] private Animator _animator;
 
