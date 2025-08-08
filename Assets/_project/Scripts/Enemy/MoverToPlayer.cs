@@ -3,11 +3,16 @@ using UnityEngine;
 [RequireComponent (typeof(Rigidbody2D))]
 public class MoverToPlayer : MonoBehaviour
 {
-    [SerializeField] private Transform _player;
+    [SerializeField] private Vector3 _player;
+
+    [SerializeField] private float _speed;
 
     private Rigidbody2D _rigidbody2D;
 
-    [SerializeField] private float _speed;
+    public void Initialize(Vector3 player)
+    {
+        _player = player;
+    }
 
     private void Awake()
     {
@@ -22,10 +27,10 @@ public class MoverToPlayer : MonoBehaviour
     private void Move()
     {
        
-        Vector3 direction = (_player.position - transform.position).normalized;
+        Vector3 direction = (_player - transform.position).normalized;
 
         direction = new Vector3 (direction.x, 0, 0);
 
-        _rigidbody2D.linearVelocity = direction * _speed;
+        _rigidbody2D.linearVelocity = -direction * _speed;
     }
 }

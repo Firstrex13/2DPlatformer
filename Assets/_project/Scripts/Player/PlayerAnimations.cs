@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerAnimations : MonoBehaviour
 {
-    private const string Running = nameof(Running);
-    private const string Jumping = nameof(Jumping);
-    private const string Falling = nameof(Falling);
+    private readonly int Running = Animator.StringToHash(nameof(Running));
+    private readonly int Jumping = Animator.StringToHash(nameof(Jumping));
+    private readonly int Falling = Animator.StringToHash(nameof(Falling));
+    private readonly int Hit = Animator.StringToHash(nameof(Hit));
 
     private Animator _animator;
 
@@ -39,5 +40,10 @@ public class PlayerAnimations : MonoBehaviour
     public void StopFallingAnimation()
     {
         _animator.SetBool(Falling, false);
+    }
+
+    public void PlayHit()
+    {
+        _animator.SetTrigger(Hit);
     }
 }

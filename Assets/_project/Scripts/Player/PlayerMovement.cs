@@ -15,19 +15,6 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody2D RigidBody2D { get; private set; }
 
-    public IEnumerator InterruptMove()
-    {
-        float delay = 0.3f;
-
-        WaitForSeconds waitForSeconds = new WaitForSeconds(delay);
-
-        _canMove = false;
-
-        yield return waitForSeconds;
-
-        _canMove = true;
-    }
-
     private void Awake()
     {
         RigidBody2D = GetComponent<Rigidbody2D>();
@@ -53,6 +40,24 @@ public class PlayerMovement : MonoBehaviour
         {
             _playerAnimations.StopFallingAnimation();
         }
+    }
+
+    public void Initialize(PlayerInput input)
+    {
+        _input = input;
+    }
+
+    public IEnumerator InterruptMove()
+    {
+        float delay = 0.3f;
+
+        WaitForSeconds waitForSeconds = new WaitForSeconds(delay);
+
+        _canMove = false;
+
+        yield return waitForSeconds;
+
+        _canMove = true;
     }
 
     private void FixedUpdate()
