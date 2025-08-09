@@ -36,10 +36,6 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < _enemySpawnPositions.Length; i++)
         {
             var enemy = Instantiate(_enemyPrefab, _enemySpawnPositions[i]);
-
-            MoverToPlayer moveToPlayer = enemy.GetComponent<MoverToPlayer>();
-
-            moveToPlayer.Initialize(_playerPrefab.transform.position);
         }
 
         _fruitCountView.Initialize(counter);

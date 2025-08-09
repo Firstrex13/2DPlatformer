@@ -7,11 +7,11 @@ public class PlayerAnimationStarter : MonoBehaviour
 
     private void OnEnable()
     {
-        _health.ChangedDown += _playerAnimations.PlayHit;
+        _health.Hit += _playerAnimations.PlayHit;
     }
 
     private void OnDisable()
     {
-        _health.ChangedDown -= _playerAnimations.PlayHit;
+        _health.Hit -= _playerAnimations.PlayHit;
     }
 }

@@ -7,8 +7,8 @@ public class Health : MonoBehaviour, IDamageable
     [SerializeField] private int _maxValue;
     [SerializeField] private int _currentValue;
 
-    public event Action ChangedDown;
-    public event Action ChangedUp;
+    public event Action Hit;
+    public event Action Healed;
     public event Action<GameObject> Died;
 
     private void Start()
@@ -18,16 +18,18 @@ public class Health : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
-        if(damage < 0)
+        if (damage < 0)
         {
             damage = 0;
         }
 
-        _currentValue -= damage;
+        if (damage > 0)
+        {
+            _currentValue -= damage;
+            Hit?.Invoke();
+        }
 
-        ChangedDown?.Invoke();
-
-        if(_currentValue <= 0)
+        if (_currentValue <= 0)
         {
             Died?.Invoke(gameObject);
         }
@@ -40,11 +42,17 @@ public class Health : MonoBehaviour, IDamageable
             healAmount = 0;
         }
 
+        if (healAmount > 0)
+        {
+            _currentValue += healAmount;
+            Healed?.Invoke();
+        }
+
         _currentValue += healAmount;
 
-        ChangedUp?.Invoke();
+        Healed?.Invoke();
 
-        if(_currentValue >= _maxValue)
+        if (_currentValue >= _maxValue)
         {
             _currentValue = _maxValue;
         }

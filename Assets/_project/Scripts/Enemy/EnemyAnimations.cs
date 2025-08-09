@@ -2,26 +2,26 @@ using UnityEngine;
 
 public class EnemyAnimations : MonoBehaviour
 {
-    private readonly int Idle = Animator.StringToHash(nameof(Idle));
-    private readonly int Running = Animator.StringToHash(nameof(Running));
-    private readonly int Hit = Animator.StringToHash(nameof(Hit));
+    private readonly int _idle = Animator.StringToHash(nameof(_idle));
+    private readonly int _running = Animator.StringToHash(nameof(_running));
+    private readonly int _hit = Animator.StringToHash(nameof(_hit));
 
     [SerializeField] private Animator _animator;
 
     public void PlayIdle()
     {
-        _animator.SetBool(Running, false);
-        _animator.SetBool(Idle, true);
+        _animator.SetBool(_running, false);
+        _animator.SetBool(_idle, true);
     }
 
     public void PlayRunnig()
     {
-        _animator.SetBool(Idle, false);
-        _animator.SetBool(Running, true);
+        _animator.SetBool(_idle, false);
+        _animator.SetBool(_running, true);
     }
 
     public void PlayHit()
     {
-        _animator.SetTrigger(Hit);
+        _animator.SetTrigger(_hit);
     }
 }

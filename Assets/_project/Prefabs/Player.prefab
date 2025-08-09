@@ -441,6 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _counter: {fileID: 9151217696020880450}
+  _health: {fileID: 878817187909047443}
 --- !u!114 &5779236073248183049
 MonoBehaviour:
   m_ObjectHideFlags: 0

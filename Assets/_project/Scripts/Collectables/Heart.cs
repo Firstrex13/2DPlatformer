@@ -2,14 +2,20 @@ using UnityEngine;
 
 public class Heart : MonoBehaviour
 {
-    private int _healAmount = 1;
+    public int HealAmount {  get; private set; }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Start()
     {
-        if(collision.TryGetComponent<Health>(out Health health))
-        {
-            health.ApplyHeal(_healAmount);
-            Destroy(gameObject);
-        }
+        HealAmount = 1;
+    }
+
+    public void Heal(Health health)
+    {
+        health.ApplyHeal(HealAmount);
+    }
+
+    public void DestroyHeart()
+    {
+        Destroy(gameObject);
     }
 }

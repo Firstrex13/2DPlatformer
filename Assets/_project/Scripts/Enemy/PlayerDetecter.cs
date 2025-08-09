@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyStateSwitcher : MonoBehaviour
+public class PlayerDetecter : MonoBehaviour
 {
     [SerializeField] private MoverPointByPoint _pointByPointMover;
     [SerializeField] private MoverToPlayer _moverToPlayer;
@@ -13,7 +13,7 @@ public class EnemyStateSwitcher : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<PlayerMovement>(out _))
+        if (collision.TryGetComponent<Player>(out _))
         {
             _enemyAnimations.PlayRunnig();
             _pointByPointMover.enabled = false;
@@ -21,9 +21,17 @@ public class EnemyStateSwitcher : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out Player player))
+        {
+            _moverToPlayer.GetPlayerPosition(player);
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<PlayerMovement>(out _))
+        if (collision.TryGetComponent<Player>(out _))
         {
             _pointByPointMover.enabled = true;
             _moverToPlayer.enabled = false;

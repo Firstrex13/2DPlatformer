@@ -8,12 +8,12 @@ public class Feedback : MonoBehaviour
 
     private void OnEnable()
     {
-        _health.ChangedDown += InteruptMovement;
+        _health.Hit += InteruptMovement;
     }
 
     private void OnDisable()
     {
-        _health.ChangedDown -= InteruptMovement;
+        _health.Hit -= InteruptMovement;
     }
 
     private void InteruptMovement()
