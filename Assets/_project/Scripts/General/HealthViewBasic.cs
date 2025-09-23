@@ -1,5 +1,4 @@
 using UnityEngine;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class HealthViewBasic : MonoBehaviour
 {
@@ -15,11 +14,6 @@ public class HealthViewBasic : MonoBehaviour
     {
         Health.Hit -= UpdateValue;
         Health.Healed -= UpdateValue;
-    }
-
-    private void Start()
-    {
-        Health = GetComponent<Health>();
     }
 
     public virtual void UpdateValue() { }
