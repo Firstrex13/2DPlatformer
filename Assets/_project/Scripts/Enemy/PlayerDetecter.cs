@@ -25,7 +25,7 @@ public class PlayerDetecter : MonoBehaviour
     {
         if (collision.TryGetComponent(out Player player))
         {
-            _moverToPlayer.GetPlayerPosition(player);
+            _moverToPlayer.GetPlayerPosition(player.transform.position);
         }
     }
 

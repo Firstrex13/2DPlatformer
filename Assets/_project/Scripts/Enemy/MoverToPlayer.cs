@@ -19,9 +19,9 @@ public class MoverToPlayer : MonoBehaviour
         Move();
     }
 
-    public void GetPlayerPosition(Player player)
+    public void GetPlayerPosition(Vector3 player)
     {
-        _player = player.transform.position;
+        _player = player;
     }
 
     private void Move()

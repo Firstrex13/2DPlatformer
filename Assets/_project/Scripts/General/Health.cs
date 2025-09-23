@@ -2,14 +2,17 @@ using System;
 using UnityEngine;
 
 [SelectionBase]
-public class Health : MonoBehaviour, IDamageable
+public class Health : MonoBehaviour , IDamageable
 {
     [SerializeField] private int _maxValue;
-    [SerializeField] private int _currentValue;
+    [SerializeField] private float _currentValue;
 
     public event Action Hit;
     public event Action Healed;
     public event Action<GameObject> Died;
+
+    public float CurrentHealth => _currentValue;
+    public int MaxValue => _maxValue;
 
     private void Start()
     {
@@ -18,20 +21,25 @@ public class Health : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
-        if (damage < 0)
+        if (_currentValue > 0)
         {
-            damage = 0;
-        }
+            if (damage < 0)
+            {
+                damage = 0;
+            }
 
-        if (damage > 0)
-        {
-            _currentValue -= damage;
-            Hit?.Invoke();
-        }
+            if (damage > 0)
+            {
+                _currentValue -= damage;
 
-        if (_currentValue <= 0)
-        {
-            Died?.Invoke(gameObject);
+                if (_currentValue <= 0)
+                {
+                    _currentValue = 0;
+                    Died?.Invoke(gameObject);
+                }
+
+                Hit?.Invoke();
+            }          
         }
     }
 
@@ -45,18 +53,13 @@ public class Health : MonoBehaviour, IDamageable
         if (healAmount > 0)
         {
             _currentValue += healAmount;
+
+            if (_currentValue >= _maxValue)
+            {
+                _currentValue = _maxValue;
+            }
+
             Healed?.Invoke();
-        }
-
-        _currentValue += healAmount;
-
-        Healed?.Invoke();
-
-        if (_currentValue >= _maxValue)
-        {
-            _currentValue = _maxValue;
-        }
+        } 
     }
 }
-
-
