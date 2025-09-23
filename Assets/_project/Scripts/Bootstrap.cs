@@ -8,10 +8,10 @@ public class Bootstrap : MonoBehaviour
 
     [SerializeField] private Camera _camera;
 
-    [SerializeField] private Spawner _spawner;
+    [SerializeField] private PlayerSpawner _playerSpawner;
 
     private void Awake()
     {
-        _spawner.Initialize(_fruitCountView, _input, _camera);
+        _playerSpawner.Initialize(_fruitCountView, _input, _camera);
     }
 }

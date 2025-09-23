@@ -23,6 +23,6 @@ public class FruitCountView : MonoBehaviour
 
     private void UpdateCountNumber()
     {
-        _text.text = _counter.GetCount().ToString();
+        _text.text = _counter.FruitCount.ToString();
     }
 }

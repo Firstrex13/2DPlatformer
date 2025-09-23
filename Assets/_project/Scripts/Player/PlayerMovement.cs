@@ -42,6 +42,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        if (_canMove)
+        {
+            Move();
+        }
+    }
+
     public void Initialize(PlayerInput input)
     {
         _input = input;
@@ -60,17 +68,9 @@ public class PlayerMovement : MonoBehaviour
         _canMove = true;
     }
 
-    private void FixedUpdate()
-    {
-        if (_canMove)
-        {
-            Move();
-        }
-    }
-
     private void Move()
     {
-        Vector2 moveDirection = new Vector2(_input.GetInput().x * _speed * Time.fixedDeltaTime, RigidBody2D.linearVelocity.y);
+        Vector2 moveDirection = new Vector2(_input.InputVector.x * _speed * Time.fixedDeltaTime, RigidBody2D.linearVelocity.y);
 
         RigidBody2D.linearVelocity = moveDirection;
 
@@ -82,7 +82,6 @@ public class PlayerMovement : MonoBehaviour
         {
             _playerAnimations.PlayIdle();
         }
-
     }
 
     private void Jump()

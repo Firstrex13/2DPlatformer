@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Recoiler : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D _rigidbody2D;
+    [SerializeField] private Rigidbody2D _rigidbody2D;
 
     [SerializeField] private int _recoilStretgth;
 
