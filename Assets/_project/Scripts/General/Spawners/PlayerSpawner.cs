@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _playerPrefab;
+    [SerializeField] private Player _playerPrefab;
 
     [SerializeField] private Transform _playerSpawnPosition;
 
