@@ -4,6 +4,11 @@ public class HealthViewBasic : MonoBehaviour
 {
     [SerializeField] protected Health Health;
 
+    private void Awake()
+    {
+        Health = GetComponent<Health>();
+    }
+
     private void OnEnable()
     {
         Health.Hit += UpdateValue;

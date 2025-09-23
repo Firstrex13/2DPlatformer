@@ -8,7 +8,7 @@ public class HealthViewSliderSmooth : HealthViewBasic
     [SerializeField] private Gradient _gradient;
     [SerializeField] private Image _fillColor;
 
-    private void Start()
+    private void Awake()
     {
         Health = GetComponent<Health>();
     }

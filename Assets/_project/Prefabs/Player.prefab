@@ -785,7 +785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a68e3f227301048b2f9693b0edddd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: {fileID: 3634902962513384645}
+  Health: {fileID: 0}
 --- !u!114 &4320162536969923091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -798,7 +798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7f7241620430a4a886a5f4ac78c254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: {fileID: 3634902962513384645}
+  Health: {fileID: 0}
   _slider: {fileID: 7171006531082576101}
   _gradient:
     serializedVersion: 2
