@@ -520,8 +520,6 @@ MonoBehaviour:
   - {fileID: 1744865401}
   - {fileID: 538543124}
   - {fileID: 1974401352}
-  _healthViewBasic: {fileID: 0}
-  _healthViewSliderSmooth: {fileID: 0}
 --- !u!4 &591572091
 Transform:
   m_ObjectHideFlags: 0
