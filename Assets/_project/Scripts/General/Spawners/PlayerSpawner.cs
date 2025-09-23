@@ -31,6 +31,8 @@ public class PlayerSpawner : MonoBehaviour
         if (player.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
         {
             playerMovement.Initialize(_input);
+
+            player.gameObject.SetActive(true);
         }
 
         _camera.Initialize(player.transform);

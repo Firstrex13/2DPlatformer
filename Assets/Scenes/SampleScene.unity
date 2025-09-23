@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42bba336498104b46894e569c4ebc4c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPrefab: {fileID: 8579760813669950433, guid: b1574c0eb5c44124e94c9f86d61bd18c, type: 3}
+  _playerPrefab: {fileID: 1385886503021034611, guid: b1574c0eb5c44124e94c9f86d61bd18c, type: 3}
   _playerSpawnPosition: {fileID: 1769806150}
 --- !u!1 &460408587
 GameObject:

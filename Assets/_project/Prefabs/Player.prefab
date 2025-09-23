@@ -239,37 +239,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &2973680170521626471
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2964585058750565967}
-  m_Layer: 0
-  m_Name: BarPlace
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2964585058750565967
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2973680170521626471}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 698537418460956620}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5104249012251455695
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,6 +287,7 @@ GameObject:
   - component: {fileID: 429764144073114347}
   - component: {fileID: 858783401487855665}
   - component: {fileID: 1390283485189846318}
+  - component: {fileID: 2994061526845024869}
   m_Layer: 0
   m_Name: Frog
   m_TagString: Untagged
@@ -429,6 +399,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6fb6c52d42f7b41835638193783d39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2994061526845024869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6937790930860070947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae93a7159427944b937f3cb7a258426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody2D: {fileID: 4447895718051817451}
 --- !u!1 &7276266146336057300
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,7 +535,6 @@ GameObject:
   - component: {fileID: 4552830945076206931}
   - component: {fileID: 9151217696020880450}
   - component: {fileID: 3012307749322775391}
-  - component: {fileID: 3149803895847187724}
   - component: {fileID: 3709141050910273969}
   - component: {fileID: 5779236073248183049}
   - component: {fileID: 4373848312881555203}
@@ -566,7 +548,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &698537418460956620
 Transform:
   m_ObjectHideFlags: 0
@@ -580,7 +562,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2964585058750565967}
   - {fileID: 7666599940802358324}
   - {fileID: 8518039334443810825}
   - {fileID: 7303059781713435367}
@@ -726,18 +707,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c266802b1d4f643a54097bc4e0c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3149803895847187724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8579760813669950433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ae93a7159427944b937f3cb7a258426, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3709141050910273969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -875,7 +844,6 @@ GameObject:
   - component: {fileID: 6053957808540836272}
   - component: {fileID: 2253921541583701790}
   - component: {fileID: 1058005852002742323}
-  - component: {fileID: 3282878484029212878}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -966,16 +934,3 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3282878484029212878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8783843257874644635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a4233ffdb466504da9b8c411e812cab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _target: {fileID: 2964585058750565967}

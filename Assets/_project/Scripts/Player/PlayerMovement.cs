@@ -20,13 +20,18 @@ public class PlayerMovement : MonoBehaviour
         RigidBody2D = GetComponent<Rigidbody2D>();
     }
 
+    private void OnEnable()
+    {
+        _input.JumpButtonPressed += Jump;
+    }
+
+    private void OnDisable()
+    {
+        _input.JumpButtonPressed -= Jump;
+    }
+
     private void Update()
     {
-        if (_input.SpacePressed && _groundDetector.IsGrounded && _canMove)
-        {
-            Jump();
-        }
-
         if (RigidBody2D.linearVelocityY > 0)
         {
             _playerAnimations.PlayJump();
@@ -86,6 +91,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        RigidBody2D.AddForceY(_jumpForce);
+        if (_input.SpacePressed && _groundDetector.IsGrounded && _canMove)
+        {
+            RigidBody2D.AddForceY(_jumpForce);
+        }
     }
 }
