@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerDetecter : MonoBehaviour
 {
     [SerializeField] private MoverPointByPoint _pointByPointMover;
-    [SerializeField] private MoverToPlayer _moverToPlayer;
+    [SerializeField] private MoverToTarget _moverToPlayer;
     [SerializeField] private EnemyAnimations _enemyAnimations;
 
     private void Start()

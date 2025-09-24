@@ -6,15 +6,18 @@ public class Collector : MonoBehaviour
     [SerializeField] private Health _health;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Fruit fruit))
+        if (collision.TryGetComponent<ICollectable>(out _))
         {
-            fruit.Collect();
-            _counter.AddFruit();
-        }
-        else if(collision.TryGetComponent(out Heart heart))
-        {
-            heart.Heal(_health);
-            heart.DestroyHeart();
+            if (collision.TryGetComponent(out Fruit fruit))
+            {
+                fruit.Collect();
+                _counter.AddFruit();
+            }
+            else if (collision.TryGetComponent(out Heart heart))
+            {
+                heart.Heal(_health);
+                heart.DestroyHeart();
+            }
         }
     }
 }

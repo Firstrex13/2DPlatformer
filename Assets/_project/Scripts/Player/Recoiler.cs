@@ -10,7 +10,7 @@ public class Recoiler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent<EnemyDetector>(out _))
+        if(collision.TryGetComponent<IDamageable>(out _))
         {
             _direction = _rigidbody2D.linearVelocity;
 

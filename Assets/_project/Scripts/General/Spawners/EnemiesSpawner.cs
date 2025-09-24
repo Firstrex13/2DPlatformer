@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemiesSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _enemyPrefab;
+    [SerializeField] private Enemy _enemyPrefab;
 
     [SerializeField] private Transform[] _enemySpawnPositions;
 

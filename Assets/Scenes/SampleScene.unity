@@ -766,7 +766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96b2331bbc3dce94492957e7a9d71425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 13099815760349004, guid: 7d7d82b7299951e4b96b42a1b3731928, type: 3}
+  _enemyPrefab: {fileID: 898593981025330402, guid: 7d7d82b7299951e4b96b42a1b3731928, type: 3}
   _enemySpawnPositions:
   - {fileID: 1967656718}
   - {fileID: 1607440025}
@@ -5863,7 +5863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f536e3817af22d542b8356e4fb6c660b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _heartPrefab: {fileID: 5646764497655597205, guid: c72ef4b65b8b5b445a4655e3e68ab6d8, type: 3}
+  _heartPrefab: {fileID: 4161818175521060703, guid: c72ef4b65b8b5b445a4655e3e68ab6d8, type: 3}
   _heartSpawnPositions:
   - {fileID: 1744865401}
   - {fileID: 538543124}

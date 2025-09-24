@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Heart : MonoBehaviour
+public class Heart : MonoBehaviour, ICollectable
 {
     public int HealAmount {  get; private set; }
 

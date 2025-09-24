@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ItemsSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _heartPrefab;
+    [SerializeField] private Heart _heartPrefab;
 
     [SerializeField] private Transform[] _heartSpawnPositions;
 

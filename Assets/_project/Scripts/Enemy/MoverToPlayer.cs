@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class MoverToPlayer : MonoBehaviour
+public class MoverToTarget : MonoBehaviour
 {
     [SerializeField] private Vector3 _player;
 
