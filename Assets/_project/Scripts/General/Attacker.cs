@@ -11,11 +11,11 @@ public class Attacker : MonoBehaviour
     {
         if (collision.TryGetComponent<IDamageable>(out IDamageable enemy))
         {
-            StartCoroutine(ApplyDamage(enemy));
+            StartCoroutine(DealDamage(enemy));
         }
     }
 
-    private IEnumerator ApplyDamage(IDamageable damageable)
+    private IEnumerator DealDamage(IDamageable damageable)
     {
         WaitForSeconds waitForSeconds = new WaitForSeconds(_delay);
 
