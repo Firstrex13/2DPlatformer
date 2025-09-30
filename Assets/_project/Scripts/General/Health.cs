@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 [SelectionBase]
-public class Health : MonoBehaviour , IDamageable
+public class Health : MonoBehaviour, IDamageable
 {
     [SerializeField] private int _maxValue;
     [SerializeField] private float _currentValue;
@@ -41,7 +41,7 @@ public class Health : MonoBehaviour , IDamageable
                 }
 
                 Hit?.Invoke();
-            }          
+            }
         }
     }
 
@@ -62,7 +62,7 @@ public class Health : MonoBehaviour , IDamageable
             }
 
             Healed?.Invoke();
-        } 
+        }
     }
 
     public void HealSmooth()
@@ -72,10 +72,15 @@ public class Health : MonoBehaviour , IDamageable
 
     public IEnumerator DamageSmooth(int strength)
     {
-        WaitForSeconds waitForSeconds = new WaitForSeconds(_changeHealthPeriod);
+        float time = 0;
 
-        TakeDamage(strength);           
+        while (time < _changeHealthPeriod)
+        {
+            time += Time.deltaTime;
 
-        yield return waitForSeconds;
+            TakeDamage(strength);
+
+            yield return null;
+        }
     }
 }
