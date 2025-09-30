@@ -9,9 +9,11 @@ public class VampireAbility : MonoBehaviour
 
     [SerializeField] private EnemyCheck _enemyCheck;
 
-    [SerializeField] private GameObject _object;
+    [SerializeField] private GameObject _abilityZone;
 
     [SerializeField] private int _stealLifeStrength;
+
+    [SerializeField] private float _stealLifePeriod;
 
     private float _abilityTime = 6f;
 
@@ -36,12 +38,12 @@ public class VampireAbility : MonoBehaviour
 
     private void Start()
     {
-        _object.SetActive(false);
+        _abilityZone.SetActive(false);
     }
 
     private void Activate()
     {
-        _object.SetActive(true);
+        _abilityZone.SetActive(true);
 
         StartCoroutine(DeActivate());
     }
@@ -52,13 +54,23 @@ public class VampireAbility : MonoBehaviour
 
         yield return waitForSeconds;
 
-        _object.SetActive(false);
+        _abilityZone.SetActive(false);
     }
 
     private void StealLife(Health health)
     {
-        _playerHealth.HealSmooth();
+        StartCoroutine(Steal(health));
+    }
 
-       StartCoroutine(health.DamageSmooth(_stealLifeStrength));
+    private IEnumerator Steal(Health health)
+    {
+        WaitForSeconds waitForSeconds = new WaitForSeconds(_stealLifePeriod);
+
+        while (enabled)
+        {
+            yield return waitForSeconds;
+
+            Debug.Log("Урон.");
+        }
     }
 }
