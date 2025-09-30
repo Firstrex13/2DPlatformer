@@ -1020,7 +1020,7 @@ MonoBehaviour:
   _input: {fileID: 0}
   _enemyCheck: {fileID: 5297095036166596603}
   _object: {fileID: 1347573211705378257}
-  _damageStrength: 1
+  _stealLifeStrength: 1
 --- !u!1 &8783843257874644635
 GameObject:
   m_ObjectHideFlags: 0

@@ -78,9 +78,14 @@ public class Health : MonoBehaviour, IDamageable
         {
             time += Time.deltaTime;
 
-            TakeDamage(strength);
+            if (time > _changeHealthPeriod)
+            {
+                time = 0;
 
-            yield return null;
+                TakeDamage(strength);
+
+                yield return null;
+            }
         }
     }
 }

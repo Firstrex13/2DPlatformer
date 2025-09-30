@@ -145,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxValue: 3
   _currentValue: 0
+  _changeHealthPeriod: 1
 --- !u!114 &1011695945402605083
 MonoBehaviour:
   m_ObjectHideFlags: 0
