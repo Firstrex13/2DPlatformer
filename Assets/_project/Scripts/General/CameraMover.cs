@@ -1,7 +1,7 @@
 using Unity.Cinemachine;
 using UnityEngine;
 
-public class Camera : MonoBehaviour
+public class CameraMover : MonoBehaviour
 {
     [SerializeField] private CinemachineCamera _camera;
     [SerializeField] private Transform _player;

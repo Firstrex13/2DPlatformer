@@ -10,8 +10,11 @@ public class PlayerInput : MonoBehaviour
     public Vector2 InputVector => _inputVector;
 
     public bool SpacePressed { get; private set; }
+    public bool FButtonPressed { get; private set; }
 
     public Action JumpButtonPressed;
+
+    public Action AbilityButtonPressed;
 
     private void Update()
     {
@@ -20,6 +23,11 @@ public class PlayerInput : MonoBehaviour
         if(SpacePressed = Input.GetKeyDown(KeyCode.Space))
         {
             JumpButtonPressed?.Invoke();
+        }
+
+        if (FButtonPressed = Input.GetKeyDown(KeyCode.F))
+        {
+            AbilityButtonPressed?.Invoke();
         }
     }
 }

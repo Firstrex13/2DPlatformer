@@ -6,7 +6,7 @@ public class Bootstrap : MonoBehaviour
 
     [SerializeField] private PlayerInput _input;
 
-    [SerializeField] private Camera _camera;
+    [SerializeField] private CameraMover _camera;
 
     [SerializeField] private PlayerSpawner _playerSpawner;
 

@@ -10,9 +10,9 @@ public class PlayerSpawner : MonoBehaviour
 
     private PlayerInput _input;
 
-    private Camera _camera;
+    private CameraMover _camera;
 
-    public void Initialize(FruitCountView fruitCountView, PlayerInput input, Camera camera)
+    public void Initialize(FruitCountView fruitCountView, PlayerInput input, CameraMover camera)
     {
         _fruitCountView = fruitCountView;
         _input = input;
@@ -31,9 +31,14 @@ public class PlayerSpawner : MonoBehaviour
         if (player.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
         {
             playerMovement.Initialize(_input);
-
-            player.gameObject.SetActive(true);
         }
+
+        if (player.TryGetComponent <VampireAbility>(out VampireAbility vampireAbility))
+        {
+            vampireAbility.Initialize(_input);
+        }
+
+        player.gameObject.SetActive(true);
 
         _camera.Initialize(player.transform);
     }

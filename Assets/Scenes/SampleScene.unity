@@ -166,6 +166,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerPrefab: {fileID: 1385886503021034611, guid: b1574c0eb5c44124e94c9f86d61bd18c, type: 3}
   _playerSpawnPosition: {fileID: 1769806150}
+--- !u!1 &112553286
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 112553287}
+  m_Layer: 0
+  m_Name: Unity-RecorderSessions
+  m_TagString: EditorOnly
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &112553287
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112553286}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1959154598}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &460408587
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,7 +211,7 @@ GameObject:
   - component: {fileID: 460408591}
   - component: {fileID: 460408590}
   - component: {fileID: 460408589}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Apple_0 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -574,7 +606,7 @@ GameObject:
   - component: {fileID: 594402864}
   - component: {fileID: 594402863}
   - component: {fileID: 594402862}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Apple_0 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -913,7 +945,7 @@ GameObject:
   - component: {fileID: 747650903}
   - component: {fileID: 747650902}
   - component: {fileID: 747650901}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Apple_0 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1151,7 +1183,7 @@ GameObject:
   - component: {fileID: 969812333}
   - component: {fileID: 969812332}
   - component: {fileID: 969812331}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Apple_0 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5002,7 +5034,7 @@ GameObject:
   - component: {fileID: 1465727865}
   - component: {fileID: 1465727864}
   - component: {fileID: 1465727863}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Apple_0 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5162,7 +5194,7 @@ GameObject:
   - component: {fileID: 1545837605}
   - component: {fileID: 1545837604}
   - component: {fileID: 1545837603}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Apple_0 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5640,7 +5672,7 @@ GameObject:
   - component: {fileID: 1752058613}
   - component: {fileID: 1752058612}
   - component: {fileID: 1752058611}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Apple_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5868,6 +5900,37 @@ MonoBehaviour:
   - {fileID: 1744865401}
   - {fileID: 538543124}
   - {fileID: 1974401352}
+--- !u!1 &1959154597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1959154598}
+  m_Layer: 0
+  m_Name: 9577478c-662f-4599-9e4b-b2232e6e23e1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1959154598
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959154597}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 112553287}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1967656717
 GameObject:
   m_ObjectHideFlags: 0
@@ -6079,7 +6142,7 @@ GameObject:
   - component: {fileID: 2035054825}
   - component: {fileID: 2035054824}
   - component: {fileID: 2035054823}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Apple_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6273,3 +6336,4 @@ SceneRoots:
   - {fileID: 981160423}
   - {fileID: 1300142331}
   - {fileID: 591572091}
+  - {fileID: 112553287}

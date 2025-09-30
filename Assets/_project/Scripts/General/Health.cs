@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 [SelectionBase]
@@ -6,6 +7,7 @@ public class Health : MonoBehaviour , IDamageable
 {
     [SerializeField] private int _maxValue;
     [SerializeField] private float _currentValue;
+    [SerializeField] private float _changeHealthPeriod;
 
     public event Action Hit;
     public event Action Healed;
@@ -61,5 +63,19 @@ public class Health : MonoBehaviour , IDamageable
 
             Healed?.Invoke();
         } 
+    }
+
+    public void HealSmooth()
+    {
+        Debug.Log("Лечусь.");
+    }
+
+    public IEnumerator DamageSmooth(int strength)
+    {
+        WaitForSeconds waitForSeconds = new WaitForSeconds(_changeHealthPeriod);
+
+        TakeDamage(strength);           
+
+        yield return waitForSeconds;
     }
 }
