@@ -20,7 +20,7 @@ public class PlayerInput : MonoBehaviour
     {
         _inputVector = new Vector2(Input.GetAxisRaw(Horizontal), 0);
 
-        if(SpacePressed = Input.GetKeyDown(KeyCode.Space))
+        if (SpacePressed = Input.GetKeyDown(KeyCode.Space))
         {
             JumpButtonPressed?.Invoke();
         }

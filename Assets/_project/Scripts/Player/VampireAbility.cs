@@ -19,6 +19,8 @@ public class VampireAbility : MonoBehaviour
 
     [SerializeField] private float _abilityRadius = 3f;
 
+    [SerializeField] private bool _activated;
+
     private float _abilityTime = 6f;
 
     private Transform _transform;
@@ -58,7 +60,7 @@ public class VampireAbility : MonoBehaviour
     {
         DetectEnemy();
 
-        if (_enemyChecked)
+        if (_enemyChecked && _activated)
         {
             if (_stealLifeCorutine == null)
             {
@@ -71,6 +73,8 @@ public class VampireAbility : MonoBehaviour
     {
         _abilityZone.SetActive(true);
 
+        _activated = true;
+
         StartCoroutine(DeActivate());
     }
 
@@ -81,38 +85,41 @@ public class VampireAbility : MonoBehaviour
         yield return waitForSeconds;
 
         _abilityZone.SetActive(false);
+
+        _activated = false;
     }
 
     private void DetectEnemy()
     {
-        Enemy nearestEnemy = null;
+        float minDistance = float.MaxValue;
 
-        float minDistance = Int32.MaxValue;
+        Enemy nearestEnemy = null;
 
         var colliders = Physics2D.OverlapCircleAll(_transform.position, _abilityRadius, _enemyLayer);
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            if (Vector3.Distance(_transform.position, colliders[i].transform.position) < minDistance)
+            float distanceSquared = Vector3.SqrMagnitude((_transform.position - colliders[i].transform.position));
+
+            if (distanceSquared < minDistance)
             {
-                float enemyDistance = Vector3.Distance(_transform.position, colliders[i].transform.position);
-
-                minDistance = enemyDistance;
-
-                if (nearestEnemy = colliders[i].GetComponent<Enemy>())
+                if (colliders[i].TryGetComponent<Enemy>(out var currentEnemy))
                 {
-                    _enemyHealth = nearestEnemy.GetComponent<Health>();
-
-                    _enemyChecked = true;
-                }
-
-                if (nearestEnemy == null)
-                {
-                    _enemyHealth = null;
-
-                    _enemyChecked = false;
+                    minDistance = distanceSquared;
+                    nearestEnemy = currentEnemy;
                 }
             }
+        }
+
+        if (nearestEnemy != null)
+        {
+            _enemyHealth = nearestEnemy.GetComponent<Health>();
+            _enemyChecked = _enemyHealth != null;
+        }
+        else
+        {
+            _enemyHealth = null;
+            _enemyChecked = false;
         }
     }
 
@@ -120,7 +127,7 @@ public class VampireAbility : MonoBehaviour
     {
         WaitForSeconds waitForSeconds = new WaitForSeconds(_stealLifePeriod);
 
-        while (enabled)
+        while (_enemyHealth != null)
         {
             health.TakeDamage(_stealLifeStrength);
 
