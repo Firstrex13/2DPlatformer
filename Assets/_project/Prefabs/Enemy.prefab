@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 5694607271713230104}
   - component: {fileID: 1763233637878165583}
   - component: {fileID: 8121070590010202820}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxValue: 3
   _currentValue: 0
-  _changeHealthPeriod: 1
 --- !u!114 &1011695945402605083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,7 +271,7 @@ GameObject:
   - component: {fileID: 597055391054862941}
   - component: {fileID: 5426147499197366410}
   - component: {fileID: 960708418845454514}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +344,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2544759180850445731}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +380,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 342466706097448504}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -412,7 +411,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6095404266438723955}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,7 +449,7 @@ GameObject:
   - component: {fileID: 2800995700285157775}
   - component: {fileID: 5678066269411276783}
   - component: {fileID: 7527733130543652142}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -525,7 +524,7 @@ GameObject:
   - component: {fileID: 6311192520869530647}
   - component: {fileID: 2009608565631965204}
   - component: {fileID: 3251223045223492834}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemySateSwicher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -617,7 +616,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7472107238509305049}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -650,7 +649,7 @@ GameObject:
   - component: {fileID: 6444856922144434121}
   - component: {fileID: 863991065630646610}
   - component: {fileID: 1283756433671223872}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Attacker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -741,7 +740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6560285979672078637}
   - component: {fileID: 3716655691257384176}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RinoVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -790,7 +789,7 @@ GameObject:
   - component: {fileID: 3697480051715838793}
   - component: {fileID: 1285370801924382538}
   - component: {fileID: 1624472714317567760}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -914,7 +913,7 @@ GameObject:
   - component: {fileID: 1007217788562362649}
   - component: {fileID: 3870076487339297335}
   - component: {fileID: 6237436610972352093}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1014,7 +1013,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5723822691944479417}
   - component: {fileID: 3065890697655379621}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
