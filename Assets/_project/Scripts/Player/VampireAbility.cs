@@ -58,13 +58,16 @@ public class VampireAbility : MonoBehaviour
 
     private void Update()
     {
-        DetectEnemy();
-
-        if (_enemyChecked && _activated)
+        if (_activated)
         {
-            if (_stealLifeCorutine == null)
+            DetectEnemy();
+
+            if (_enemyChecked)
             {
-                _stealLifeCorutine = StartCoroutine(StealLife(_enemyHealth));
+                if (_stealLifeCorutine == null)
+                {
+                    _stealLifeCorutine = StartCoroutine(StealLife(_enemyHealth));
+                }
             }
         }
     }
@@ -120,6 +123,7 @@ public class VampireAbility : MonoBehaviour
         {
             _enemyHealth = null;
             _enemyChecked = false;
+            _stealLifeCorutine = null;
         }
     }
 
