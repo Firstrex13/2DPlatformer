@@ -19,7 +19,7 @@ public class Health : MonoBehaviour, IDamageable
         _currentValue = _maxValue;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if (_currentValue > 0)
         {
@@ -43,7 +43,7 @@ public class Health : MonoBehaviour, IDamageable
         }
     }
 
-    public void ApplyHeal(int healAmount)
+    public void ApplyHeal(float healAmount)
     {
         if (healAmount < 0)
         {

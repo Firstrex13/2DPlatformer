@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -17,15 +16,6 @@ public class EnemyDetector : MonoBehaviour
     private Transform _transform;
 
     private Coroutine _detectEnemyCoroutine;
-
-    [SerializeField] private bool _enemyDetected;
-
-    public Health EnemyHealth => _enemyHealth;
-
-    public event Action<Health> EnemyHealthDetected;
-    public event Action EnemyHealthOut;
-
-    public bool EnemyDetected => _enemyDetected;
 
     public void Initialize(PlayerInput input)
     {
@@ -49,12 +39,12 @@ public class EnemyDetector : MonoBehaviour
 
     private void Activate()
     {
-        if(_detectEnemyCoroutine != null)
+        if (_detectEnemyCoroutine != null)
         {
-            StopCoroutine( _detectEnemyCoroutine );
+            StopCoroutine(_detectEnemyCoroutine);
         }
 
-       _detectEnemyCoroutine = StartCoroutine(DetectEnemy());
+        _detectEnemyCoroutine = StartCoroutine(DetectEnemy());
     }
 
     private IEnumerator DetectEnemy()
@@ -86,14 +76,10 @@ public class EnemyDetector : MonoBehaviour
             if (nearestEnemy != null)
             {
                 _enemyHealth = nearestEnemy.GetComponent<Health>();
-                _enemyDetected = true;
-                EnemyHealthDetected?.Invoke(_enemyHealth);
             }
             else
             {
                 _enemyHealth = null;
-                _enemyDetected = false;
-                EnemyHealthOut?.Invoke();
             }
 
             timer += Time.deltaTime;
@@ -107,5 +93,10 @@ public class EnemyDetector : MonoBehaviour
         Gizmos.color = Color.yellow;
 
         Gizmos.DrawWireSphere(_transform.position, _abilityRadius);
+    }
+
+    public Health GetClosestEnemyHealth()
+    {
+        return _enemyHealth;
     }
 }
