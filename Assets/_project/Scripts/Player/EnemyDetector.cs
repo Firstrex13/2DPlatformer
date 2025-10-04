@@ -18,9 +18,13 @@ public class EnemyDetector : MonoBehaviour
 
     private Coroutine _detectEnemyCoroutine;
 
+    private bool _enemyDetected;
+
     public Health EnemyHealth => _enemyHealth;
 
     public event Action<Health> EnemyHealthDetected;
+
+    public bool EnemyDetected => _enemyDetected;
 
     public void Initialize(PlayerInput input)
     {
@@ -81,11 +85,13 @@ public class EnemyDetector : MonoBehaviour
             if (nearestEnemy != null)
             {
                 _enemyHealth = nearestEnemy.GetComponent<Health>();
+                _enemyDetected = true;
                 EnemyHealthDetected?.Invoke(_enemyHealth);
             }
             else
             {
                 _enemyHealth = null;
+                _enemyDetected = false;
             }
 
             timer += Time.deltaTime;

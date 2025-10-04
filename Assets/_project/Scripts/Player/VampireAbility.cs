@@ -82,19 +82,29 @@ public class VampireAbility : MonoBehaviour
     {
         if (_isReady)
         {
-            if (_stealLifeCoroutine != null)
+            if (_enemyDetector.EnemyDetected)
             {
-                StopCoroutine(_stealLifeCoroutine);
+                if (_stealLifeCoroutine != null)
+                {
+                    StopCoroutine(_stealLifeCoroutine);
+                }
+
+                _stealLifeCoroutine = StartCoroutine(StealLife(health));
+
+                if (_reloadCoroutine != null)
+                {
+                    _reloadCoroutine = StartCoroutine(Relodoad());
+                }
+
+                _isReady = false;
             }
-
-            _stealLifeCoroutine = StartCoroutine(StealLife(health));
-
-            if (_reloadCoroutine != null)
+            else
             {
-                _reloadCoroutine = StartCoroutine(Relodoad());
+                if (_stealLifeCoroutine != null)
+                {
+                    StopCoroutine(_stealLifeCoroutine);
+                }
             }
-
-            _isReady = false;
         }
     }
 
