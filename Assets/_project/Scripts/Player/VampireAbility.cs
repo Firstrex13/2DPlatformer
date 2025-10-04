@@ -11,72 +11,45 @@ public class VampireAbility : MonoBehaviour
 
     [SerializeField] private int _stealLifeStrength;
 
-    [SerializeField] private float _stealLifePeriod;
+    [SerializeField] private float _stealLifePeriod = 1f;
 
-    [SerializeField] private LayerMask _enemyLayer;
-
-    [SerializeField] private float _abilityRadius = 3f;
-
-    [SerializeField] private bool _activated;
+    [SerializeField] private EnemyDetector _enemyDetector;
 
     private float _abilityTime = 6f;
 
-    private Transform _transform;
-
     private Coroutine _stealLifeCoroutine;
+
     private Coroutine _switchOn_OffCoroutine;
-    private Coroutine _detectEnemyCoroutine;
-
-    [SerializeField] private bool _enemyChecked = false;
-
-    [SerializeField] private Health _enemyHealth;
 
     public void Initialize(PlayerInput input)
     {
         _input = input;
     }
 
-    private void Awake()
-    {
-        _transform = transform;
-    }
-
     private void OnEnable()
     {
         _input.AbilityButtonPressed += Activate;
+        _enemyDetector.EnemyHealthDetected += VampireAttack;
     }
 
     private void OnDisable()
     {
         _input.AbilityButtonPressed -= Activate;
+        _enemyDetector.EnemyHealthDetected -= VampireAttack;
     }
 
     private void Start()
     {
         _abilityZone.SetActive(false);
     }
-    private void Update()
-    {
-        if (!_activated)
-        {
-            if (_switchOn_OffCoroutine != null && _stealLifeCoroutine != null)
-            {
-                StopCoroutine(_switchOn_OffCoroutine);
-                StopCoroutine(_detectEnemyCoroutine);
-                StopCoroutine(_stealLifeCoroutine);
-                _switchOn_OffCoroutine = null;
-                _stealLifeCoroutine = null;
-                _stealLifeCoroutine = null;
-            }
-        }
-        else
-        {
-            _detectEnemyCoroutine = StartCoroutine(DetectEnemy());
-        }
-    }
 
     private void Activate()
     {
+        if (_switchOn_OffCoroutine != null)
+        {
+            StopCoroutine(_switchOn_OffCoroutine);
+        }
+
         _switchOn_OffCoroutine = StartCoroutine(SwitchOn_Off());
     }
 
@@ -86,86 +59,30 @@ public class VampireAbility : MonoBehaviour
 
         _abilityZone.SetActive(true);
 
-        _activated = true;
-
         yield return waitForSeconds;
 
         _abilityZone.SetActive(false);
-
-        _activated = false;
     }
 
-    private IEnumerator DeActivate()
+    private void VampireAttack(Health health)
     {
-        WaitForSeconds waitForSeconds = new WaitForSeconds(_abilityTime);
-
-        yield return waitForSeconds;
-
-        _abilityZone.SetActive(false);
-
-        _activated = false;
-    }
-
-    private IEnumerator DetectEnemy()
-    {
-        float timer = 0;
-        while (timer < _abilityTime)
+        if (_stealLifeCoroutine != null)
         {
-            float minDistance = float.MaxValue;
-
-            Enemy nearestEnemy = null;
-
-            var colliders = Physics2D.OverlapCircleAll(_transform.position, _abilityRadius, _enemyLayer);
-
-            for (int i = 0; i < colliders.Length; i++)
-            {
-                float distanceSquared = Vector3.SqrMagnitude((_transform.position - colliders[i].transform.position));
-
-                if (distanceSquared < minDistance)
-                {
-                    if (colliders[i].TryGetComponent<Enemy>(out var currentEnemy))
-                    {
-                        minDistance = distanceSquared;
-                        nearestEnemy = currentEnemy;
-                    }
-                }
-            }
-
-            if (nearestEnemy != null)
-            {
-                _enemyHealth = nearestEnemy.GetComponent<Health>();
-                _enemyChecked = _enemyHealth != null;
-                _stealLifeCoroutine =  StartCoroutine(StealLife(_enemyHealth));
-            }
-            else
-            {
-                _enemyHealth = null;
-                _enemyChecked = false;
-                _stealLifeCoroutine = null;
-            }
-
-            timer += Time.deltaTime;
-
-            yield return null;
+            StopCoroutine(_stealLifeCoroutine);
         }
+
+        _stealLifeCoroutine = StartCoroutine(StealLife(health));
     }
 
     private IEnumerator StealLife(Health health)
     {
         WaitForSeconds waitForSeconds = new WaitForSeconds(_stealLifePeriod);
 
-        while (_enemyHealth != null)
+        while (health != null)
         {
             health.TakeDamage(_stealLifeStrength);
 
             yield return waitForSeconds;
         }
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-
-        Gizmos.DrawWireSphere(_transform.position, _abilityRadius);
     }
 }
