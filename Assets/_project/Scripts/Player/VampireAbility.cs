@@ -108,7 +108,8 @@ public class VampireAbility : MonoBehaviour
 
     private IEnumerator DetectEnemy()
     {
-        while (_abilityTime > 0)
+        float timer = 0;
+        while (timer < _abilityTime)
         {
             float minDistance = float.MaxValue;
 
@@ -143,7 +144,7 @@ public class VampireAbility : MonoBehaviour
                 _stealLifeCoroutine = null;
             }
 
-            _abilityTime -= Time.deltaTime;
+            timer += Time.deltaTime;
 
             yield return null;
         }
