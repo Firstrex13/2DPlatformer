@@ -129,6 +129,7 @@ public class VampireAbility : MonoBehaviour
             {
                 _enemyHealth = nearestEnemy.GetComponent<Health>();
                 _enemyChecked = _enemyHealth != null;
+                _enemyHealth.TakeDamage(_stealLifeStrength);
             }
             else
             {
