@@ -60,6 +60,8 @@ public class VampireAbility : MonoBehaviour
         {
             if (_switchOn_OffCoroutine != null && _stealLifeCoroutine != null)
             {
+                StopCoroutine(_switchOn_OffCoroutine);
+                StopCoroutine(_stealLifeCoroutine);
                 _switchOn_OffCoroutine = null;
                 _stealLifeCoroutine = null;
             }
