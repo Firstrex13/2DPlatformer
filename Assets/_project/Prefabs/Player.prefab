@@ -651,6 +651,7 @@ GameObject:
   - component: {fileID: 8385910199193982146}
   - component: {fileID: 2329348731671163722}
   - component: {fileID: 3634902962513384645}
+  - component: {fileID: 1374183138398771907}
   - component: {fileID: 4552830945076206931}
   - component: {fileID: 9151217696020880450}
   - component: {fileID: 3012307749322775391}
@@ -661,7 +662,6 @@ GameObject:
   - component: {fileID: 1385886503021034611}
   - component: {fileID: 764455634193867643}
   - component: {fileID: 4320162536969923091}
-  - component: {fileID: 1374183138398771907}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -786,6 +786,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxValue: 10
   _currentValue: 0
+--- !u!114 &1374183138398771907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8579760813669950433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892e78b09e040a24b97672dd5fd2a5ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerHealth: {fileID: 3634902962513384645}
+  _input: {fileID: 0}
+  _abilityZone: {fileID: 1347573211705378257}
+  _stealLifeStrength: 1
+  _stealLifePeriod: 1
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  _abilityRadius: 1.5
+  _activated: 0
+  _enemyChecked: 0
+  _enemyHealth: {fileID: 0}
 --- !u!114 &4552830945076206931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -953,29 +977,6 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   _fillColor: {fileID: 7463567723788758344}
---- !u!114 &1374183138398771907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8579760813669950433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 892e78b09e040a24b97672dd5fd2a5ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerHealth: {fileID: 3634902962513384645}
-  _input: {fileID: 0}
-  _abilityZone: {fileID: 1347573211705378257}
-  _stealLifeStrength: 1
-  _stealLifePeriod: 1
-  _enemyLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  _abilityRadius: 1.5
-  _enemyChecked: 0
-  _enemyHealth: {fileID: 0}
 --- !u!1 &8783843257874644635
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 
 public class VampireAbility : MonoBehaviour
@@ -25,7 +23,8 @@ public class VampireAbility : MonoBehaviour
 
     private Transform _transform;
 
-    private Coroutine _stealLifeCorutine;
+    private Coroutine _stealLifeCoroutine;
+    private Coroutine _switchOn_OffCoroutine;
 
     [SerializeField] private bool _enemyChecked = false;
 
@@ -55,30 +54,40 @@ public class VampireAbility : MonoBehaviour
     {
         _abilityZone.SetActive(false);
     }
-
     private void Update()
     {
-        if (_activated)
+        if (!_activated)
         {
-            DetectEnemy();
-
-            if (_enemyChecked)
+            if (_switchOn_OffCoroutine != null && _stealLifeCoroutine != null)
             {
-                if (_stealLifeCorutine == null)
-                {
-                    _stealLifeCorutine = StartCoroutine(StealLife(_enemyHealth));
-                }
+                _switchOn_OffCoroutine = null;
+                _stealLifeCoroutine = null;
             }
+        }
+        else
+        {
+            _stealLifeCoroutine = StartCoroutine(DetectEnemy());
         }
     }
 
     private void Activate()
     {
+        _switchOn_OffCoroutine = StartCoroutine(SwitchOn_Off());
+    }
+
+    private IEnumerator SwitchOn_Off()
+    {
+        WaitForSeconds waitForSeconds = new WaitForSeconds(_abilityTime);
+
         _abilityZone.SetActive(true);
 
         _activated = true;
 
-        StartCoroutine(DeActivate());
+        yield return waitForSeconds;
+
+        _abilityZone.SetActive(false);
+
+        _activated = false;
     }
 
     private IEnumerator DeActivate()
@@ -92,38 +101,45 @@ public class VampireAbility : MonoBehaviour
         _activated = false;
     }
 
-    private void DetectEnemy()
+    private IEnumerator DetectEnemy()
     {
-        float minDistance = float.MaxValue;
-
-        Enemy nearestEnemy = null;
-
-        var colliders = Physics2D.OverlapCircleAll(_transform.position, _abilityRadius, _enemyLayer);
-
-        for (int i = 0; i < colliders.Length; i++)
+        while (_abilityTime > 0)
         {
-            float distanceSquared = Vector3.SqrMagnitude((_transform.position - colliders[i].transform.position));
+            float minDistance = float.MaxValue;
 
-            if (distanceSquared < minDistance)
+            Enemy nearestEnemy = null;
+
+            var colliders = Physics2D.OverlapCircleAll(_transform.position, _abilityRadius, _enemyLayer);
+
+            for (int i = 0; i < colliders.Length; i++)
             {
-                if (colliders[i].TryGetComponent<Enemy>(out var currentEnemy))
+                float distanceSquared = Vector3.SqrMagnitude((_transform.position - colliders[i].transform.position));
+
+                if (distanceSquared < minDistance)
                 {
-                    minDistance = distanceSquared;
-                    nearestEnemy = currentEnemy;
+                    if (colliders[i].TryGetComponent<Enemy>(out var currentEnemy))
+                    {
+                        minDistance = distanceSquared;
+                        nearestEnemy = currentEnemy;
+                    }
                 }
             }
-        }
 
-        if (nearestEnemy != null)
-        {
-            _enemyHealth = nearestEnemy.GetComponent<Health>();
-            _enemyChecked = _enemyHealth != null;
-        }
-        else
-        {
-            _enemyHealth = null;
-            _enemyChecked = false;
-            _stealLifeCorutine = null;
+            if (nearestEnemy != null)
+            {
+                _enemyHealth = nearestEnemy.GetComponent<Health>();
+                _enemyChecked = _enemyHealth != null;
+            }
+            else
+            {
+                _enemyHealth = null;
+                _enemyChecked = false;
+                _stealLifeCoroutine = null;
+            }
+
+            _abilityTime -= Time.deltaTime;
+
+            yield return null;
         }
     }
 
