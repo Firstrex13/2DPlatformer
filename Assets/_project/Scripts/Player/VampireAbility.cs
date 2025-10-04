@@ -25,6 +25,7 @@ public class VampireAbility : MonoBehaviour
 
     private Coroutine _stealLifeCoroutine;
     private Coroutine _switchOn_OffCoroutine;
+    private Coroutine _detectEnemyCoroutine;
 
     [SerializeField] private bool _enemyChecked = false;
 
@@ -61,14 +62,16 @@ public class VampireAbility : MonoBehaviour
             if (_switchOn_OffCoroutine != null && _stealLifeCoroutine != null)
             {
                 StopCoroutine(_switchOn_OffCoroutine);
+                StopCoroutine(_detectEnemyCoroutine);
                 StopCoroutine(_stealLifeCoroutine);
                 _switchOn_OffCoroutine = null;
+                _stealLifeCoroutine = null;
                 _stealLifeCoroutine = null;
             }
         }
         else
         {
-            _stealLifeCoroutine = StartCoroutine(DetectEnemy());
+            _detectEnemyCoroutine = StartCoroutine(DetectEnemy());
         }
     }
 
@@ -131,7 +134,7 @@ public class VampireAbility : MonoBehaviour
             {
                 _enemyHealth = nearestEnemy.GetComponent<Health>();
                 _enemyChecked = _enemyHealth != null;
-                _enemyHealth.TakeDamage(_stealLifeStrength);
+                _stealLifeCoroutine =  StartCoroutine(StealLife(_enemyHealth));
             }
             else
             {
