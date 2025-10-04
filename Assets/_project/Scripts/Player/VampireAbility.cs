@@ -25,6 +25,8 @@ public class VampireAbility : MonoBehaviour
 
     private bool _isReady = true;
 
+    private bool _isActivated;
+
     public void Initialize(PlayerInput input)
     {
         _input = input;
@@ -45,16 +47,22 @@ public class VampireAbility : MonoBehaviour
     private void Start()
     {
         _abilityZone.SetActive(false);
+        _isActivated = false;
     }
 
     private void Activate()
     {
-        if (_switchOn_OffCoroutine != null)
+        if (!_isActivated)
         {
-            StopCoroutine(_switchOn_OffCoroutine);
-        }
+            if (_switchOn_OffCoroutine != null)
+            {
+                StopCoroutine(_switchOn_OffCoroutine);
+            }
 
-        _switchOn_OffCoroutine = StartCoroutine(SwitchOn_Off());
+            _switchOn_OffCoroutine = StartCoroutine(SwitchOn_Off());
+
+            _isActivated = true;
+        }
     }
 
     private IEnumerator SwitchOn_Off()
@@ -66,11 +74,13 @@ public class VampireAbility : MonoBehaviour
         yield return waitForSeconds;
 
         _abilityZone.SetActive(false);
+
+        _isActivated = false;
     }
 
     private void VampireAttack(Health health)
     {
-        if(_isReady)
+        if (_isReady)
         {
             if (_stealLifeCoroutine != null)
             {
@@ -79,13 +89,13 @@ public class VampireAbility : MonoBehaviour
 
             _stealLifeCoroutine = StartCoroutine(StealLife(health));
 
-            if(_reloadCoroutine != null)
+            if (_reloadCoroutine != null)
             {
                 _reloadCoroutine = StartCoroutine(Relodoad());
             }
 
             _isReady = false;
-        }   
+        }
     }
 
     private IEnumerator Relodoad()
@@ -117,5 +127,7 @@ public class VampireAbility : MonoBehaviour
 
             yield return waitForSeconds;
         }
+
+        _isReady = true;
     }
 }
