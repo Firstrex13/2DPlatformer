@@ -21,6 +21,10 @@ public class VampireAbility : MonoBehaviour
 
     private Coroutine _switchOn_OffCoroutine;
 
+    private Coroutine _reloadCoroutine;
+
+    private bool _isReady = true;
+
     public void Initialize(PlayerInput input)
     {
         _input = input;
@@ -66,17 +70,44 @@ public class VampireAbility : MonoBehaviour
 
     private void VampireAttack(Health health)
     {
-        if (_stealLifeCoroutine != null)
+        if(_isReady)
         {
-            StopCoroutine(_stealLifeCoroutine);
-        }
+            if (_stealLifeCoroutine != null)
+            {
+                StopCoroutine(_stealLifeCoroutine);
+            }
 
-        _stealLifeCoroutine = StartCoroutine(StealLife(health));
+            _stealLifeCoroutine = StartCoroutine(StealLife(health));
+
+            if(_reloadCoroutine != null)
+            {
+                _reloadCoroutine = StartCoroutine(Relodoad());
+            }
+
+            _isReady = false;
+        }   
+    }
+
+    private IEnumerator Relodoad()
+    {
+        float timer = 0;
+
+        while (timer < _stealLifePeriod)
+        {
+            timer += Time.deltaTime;
+
+            if (timer >= _stealLifePeriod)
+            {
+                _isReady = true;
+
+                yield return null;
+            }
+        }
     }
 
     private IEnumerator StealLife(Health health)
     {
-        WaitForSeconds waitForSeconds = new WaitForSeconds(_stealLifePeriod);
+        WaitForSecondsRealtime waitForSeconds = new WaitForSecondsRealtime(_stealLifePeriod);
 
         while (health != null)
         {
