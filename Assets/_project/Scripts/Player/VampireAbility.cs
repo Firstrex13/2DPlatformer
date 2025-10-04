@@ -27,6 +27,8 @@ public class VampireAbility : MonoBehaviour
 
     private bool _isActivated;
 
+    [SerializeField] private bool _detected;
+
     public void Initialize(PlayerInput input)
     {
         _input = input;
@@ -36,18 +38,25 @@ public class VampireAbility : MonoBehaviour
     {
         _input.AbilityButtonPressed += Activate;
         _enemyDetector.EnemyHealthDetected += VampireAttack;
+        _enemyDetector.EnemyHealthOut += Interapt;
     }
 
     private void OnDisable()
     {
         _input.AbilityButtonPressed -= Activate;
         _enemyDetector.EnemyHealthDetected -= VampireAttack;
+        _enemyDetector.EnemyHealthOut -= Interapt;
     }
 
     private void Start()
     {
         _abilityZone.SetActive(false);
         _isActivated = false;
+    }
+
+    private void Update()
+    {
+        _detected = _enemyDetector.EnemyDetected;
     }
 
     private void Activate()
@@ -62,6 +71,17 @@ public class VampireAbility : MonoBehaviour
             _switchOn_OffCoroutine = StartCoroutine(SwitchOn_Off());
 
             _isActivated = true;
+        }
+    }
+
+    private void Interapt()
+    {
+        if (_enemyDetector.EnemyDetected == false)
+        {
+            if (_stealLifeCoroutine != null)
+            {
+                StopCoroutine(_stealLifeCoroutine);
+            }
         }
     }
 
@@ -82,7 +102,7 @@ public class VampireAbility : MonoBehaviour
     {
         if (_isReady)
         {
-            if (_enemyDetector.EnemyDetected)
+            if (_detected)
             {
                 if (_stealLifeCoroutine != null)
                 {
@@ -91,18 +111,11 @@ public class VampireAbility : MonoBehaviour
 
                 _stealLifeCoroutine = StartCoroutine(StealLife(health));
 
+                _isReady = false;
+
                 if (_reloadCoroutine != null)
                 {
                     _reloadCoroutine = StartCoroutine(Relodoad());
-                }
-
-                _isReady = false;
-            }
-            else
-            {
-                if (_stealLifeCoroutine != null)
-                {
-                    StopCoroutine(_stealLifeCoroutine);
                 }
             }
         }

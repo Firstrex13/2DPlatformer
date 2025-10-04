@@ -18,11 +18,12 @@ public class EnemyDetector : MonoBehaviour
 
     private Coroutine _detectEnemyCoroutine;
 
-    private bool _enemyDetected;
+    [SerializeField] private bool _enemyDetected;
 
     public Health EnemyHealth => _enemyHealth;
 
     public event Action<Health> EnemyHealthDetected;
+    public event Action EnemyHealthOut;
 
     public bool EnemyDetected => _enemyDetected;
 
@@ -92,6 +93,7 @@ public class EnemyDetector : MonoBehaviour
             {
                 _enemyHealth = null;
                 _enemyDetected = false;
+                EnemyHealthOut?.Invoke();
             }
 
             timer += Time.deltaTime;
