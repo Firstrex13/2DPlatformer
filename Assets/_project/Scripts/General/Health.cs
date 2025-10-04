@@ -39,8 +39,6 @@ public class Health : MonoBehaviour, IDamageable
                 }
 
                 Hit?.Invoke();
-
-                Debug.Log("Damage");
             }
         }
     }

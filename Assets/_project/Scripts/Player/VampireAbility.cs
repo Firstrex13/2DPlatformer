@@ -82,6 +82,8 @@ public class VampireAbility : MonoBehaviour
         {
             health.TakeDamage(_stealLifeStrength);
 
+            Debug.Log(_stealLifeStrength);
+
             yield return waitForSeconds;
         }
     }
