@@ -13,19 +13,14 @@ public class VampireAbility : MonoBehaviour
 
     [SerializeField] private EnemyDetector _enemyDetector;
 
-    private float _abilityTime = 6f;
-
-    private float _cooldown = 4f;
-
     private Coroutine _attackCoroutine;
 
-    private bool _isActivated;
+    public bool IsActivated { get; private set; } 
 
-    private bool _isOnCooldown;
+    public bool IsOnCooldown { get; private set; }
 
-    public bool IsActivated => _isActivated;
-    public float AbilityTime => _abilityTime;
-    public float Cooldown => _cooldown;
+    public float AbilityTime { get; private set; }
+    public float Cooldown {  get; private set; }
 
     public void Initialize(PlayerInput input)
     {
@@ -45,12 +40,15 @@ public class VampireAbility : MonoBehaviour
     private void Start()
     {
         _abilityZone.SetActive(false);
-        _isActivated = false;
+        IsActivated = false;
+        AbilityTime = 6f;
+        Cooldown = 4f;
+        IsOnCooldown = false;
     }
 
     private void ActivateOnButtonClick()
     {
-        if (_isActivated || _isOnCooldown)
+        if (IsActivated || IsOnCooldown)
         {
             return;
         }
@@ -67,36 +65,37 @@ public class VampireAbility : MonoBehaviour
     {
         _abilityZone.SetActive(true);
 
-        _isActivated = true;
+        IsActivated = true;
 
         yield return StealLife();
 
-        _isActivated = false;
+        IsActivated = false;
 
         _abilityZone.SetActive(false);
 
-        _isOnCooldown = true;
+        IsOnCooldown = true;
 
-        yield return new WaitForSeconds(_cooldown);
+        yield return new WaitForSeconds(Cooldown);
 
-        _isOnCooldown = false;
+        IsOnCooldown = false;
     }
 
     private IEnumerator StealLife()
     {
         float elapsedTime = 0;
 
-        while (elapsedTime < _abilityTime)
+        while (elapsedTime < AbilityTime)
         {
             var enemy = _enemyDetector.DetectEnemy();
 
             if (enemy != null)
             {
-                enemy.TryGetComponent<Health>(out Health health);
+                if(enemy.TryGetComponent<Health>(out Health health))
+                {
+                    health.TakeDamage(_stealLifeStrength * Time.deltaTime);
 
-                health.TakeDamage(_stealLifeStrength * Time.deltaTime);
-
-                _playerHealth.ApplyHeal(_stealLifeStrength * Time.deltaTime);
+                    _playerHealth.ApplyHeal(_stealLifeStrength * Time.deltaTime);
+                }           
             }
 
             elapsedTime += Time.deltaTime;

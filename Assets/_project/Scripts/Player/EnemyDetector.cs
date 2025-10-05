@@ -31,28 +31,22 @@ public class EnemyDetector : MonoBehaviour
 
         if (count > 0)
         {
-            for (int i = 0; i < colliders.Length; i++)
+            for (int i = 0; i < count; i++)
             {
                 float distanceSquared = Vector3.SqrMagnitude(_transform.position - colliders[i].transform.position);
 
                 if (distanceSquared < minDistance)
                 {
                     if (colliders[i].TryGetComponent<Enemy>(out var currentEnemy))
-                    {
-                      
+                    {           
                         minDistance = distanceSquared;
 
-                        nearestEnemy = currentEnemy;
-
-                        if (nearestEnemy != null)
-                        {
-                            return nearestEnemy;
-                        }
+                        nearestEnemy = currentEnemy;                      
                     }
                 }
-            }
+            }          
         }
 
-        return null;
+        return nearestEnemy;
     }
 }
