@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 397954804210217044}
   - component: {fileID: 6816898730751613673}
   - component: {fileID: 2261455938670609177}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 8514328842246917219}
   - component: {fileID: 2761881326046750292}
   - component: {fileID: 7463567723788758344}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +338,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2762478541793612424}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +371,7 @@ GameObject:
   m_Component:
   - component: {fileID: 619549836834866563}
   - component: {fileID: 7171006531082576101}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -570,7 +570,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7601013718033473417}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -887,7 +887,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2620105411146917723}
   - component: {fileID: 4923397643977240149}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1146,8 +1146,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _abilityRadius: 1.5
-  _enemyHealth: {fileID: 0}
-  _input: {fileID: 0}
 --- !u!114 &4552830945076206931
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -38,11 +38,6 @@ public class PlayerSpawner : MonoBehaviour
             vampireAbility.Initialize(_input);
         }
 
-        if (player.TryGetComponent<EnemyDetector>(out EnemyDetector enemyDetector))
-        {
-            enemyDetector.Initialize(_input);
-        }
-
         player.gameObject.SetActive(true);
 
         _camera.Initialize(player.transform);

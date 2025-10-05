@@ -524,7 +524,7 @@ GameObject:
   - component: {fileID: 6311192520869530647}
   - component: {fileID: 2009608565631965204}
   - component: {fileID: 3251223045223492834}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: EnemySateSwicher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -649,7 +649,7 @@ GameObject:
   - component: {fileID: 6444856922144434121}
   - component: {fileID: 863991065630646610}
   - component: {fileID: 1283756433671223872}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Attacker
   m_TagString: Untagged
   m_Icon: {fileID: 0}

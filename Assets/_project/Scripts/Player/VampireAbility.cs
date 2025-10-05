@@ -17,7 +17,7 @@ public class VampireAbility : MonoBehaviour
 
     private float _cooldown = 4f;
 
-    private Coroutine _switchOn_OffCoroutine;
+    private Coroutine _attackCoroutine;
 
     private bool _isActivated;
 
@@ -55,15 +55,15 @@ public class VampireAbility : MonoBehaviour
             return;
         }
 
-        if (_switchOn_OffCoroutine != null)
+        if (_attackCoroutine != null)
         {
-            StopCoroutine(_switchOn_OffCoroutine);
+            StopCoroutine(_attackCoroutine);
         }
 
-        _switchOn_OffCoroutine = StartCoroutine(VampireAttack());
+        _attackCoroutine = StartCoroutine(Attack());
     }
 
-    private IEnumerator VampireAttack()
+    private IEnumerator Attack()
     {
         _abilityZone.SetActive(true);
 
@@ -84,16 +84,17 @@ public class VampireAbility : MonoBehaviour
 
     private IEnumerator StealLife()
     {
-
         float elapsedTime = 0;
 
         while (elapsedTime < _abilityTime)
         {
-            var enemy = _enemyDetector.GetClosestEnemyHealth();
+            var enemy = _enemyDetector.DetectEnemy();
 
             if (enemy != null)
             {
-                enemy.TakeDamage(_stealLifeStrength * Time.deltaTime);
+                enemy.TryGetComponent<Health>(out Health health);
+
+                health.TakeDamage(_stealLifeStrength * Time.deltaTime);
 
                 _playerHealth.ApplyHeal(_stealLifeStrength * Time.deltaTime);
             }
